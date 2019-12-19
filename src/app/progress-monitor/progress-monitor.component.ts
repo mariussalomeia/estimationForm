@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProgressMessage} from './progress-monitor';
+import {ProgressMessage} from 'progress-message';
 
 @Component({
   selector: 'app-progress-monitor',
@@ -10,9 +10,14 @@ export class ProgressMonitorComponent implements OnInit {
   
   messages :ProgressMessage[];
 
-  constructor() { }
+  constructor(sourceURL:string) { }
 
   ngOnInit() {
+    this.messages =[];
+  }
+
+  monitorProgress(){
+    
   }
 
   
