@@ -1,6 +1,6 @@
 <mat-card class="app-progress-monitor">
-	<mat-card-title>{{title}}</mat-card-title>
-	<mat-card-content>
+	<mat-card-title>{{processTitle}}</mat-card-title>
+	<mat-card-content #scrollMe [scrollTop]="scrollMe.scrollHeight">
     <ul >
       <li *ngFor="let message of messages">
         <span class="badge-{{ message.type }}">&nbsp;</span>{{message.content}}

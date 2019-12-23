@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { ProgressMessage } from "./progress-message";
 import { ProgressReport } from "./progress-report";
 import {
@@ -14,24 +14,33 @@ import {
   styleUrls: ["./progress-monitor.component.css"]
 })
 export class ProgressMonitorComponent implements OnInit {
-  
+  @ViewChild("progressBody") private myScrollContainer: ElementRef;
+
   messages: ProgressMessage[];
   status: number;
-  
+
   @Input()
-  public title:string;
-  
+  public processTitle: string;
+
   @Input()
   public timeoutInterval: number;
-  
+
   @Input()
   public progressCallback: Function;
-  
+
   constructor() {}
 
   ngOnInit() {
     this.messages = [];
     this.monitorProgress();
+  }
+
+  scrollToBottom() {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   monitorProgress() {
@@ -50,7 +59,8 @@ export class ProgressMonitorComponent implements OnInit {
         progressReport.messages.forEach(function(value) {
           obj.messages.push(value);
         });
-      }
+       
+       }
 
       if (jobStatus != 0) {
         //job not completed yet so scheduled another fetch
