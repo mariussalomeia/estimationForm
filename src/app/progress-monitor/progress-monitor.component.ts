@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component,Input, OnInit } from "@angular/core";
 import { ProgressMessage } from "./progress-message";
 import { ProgressReport } from "./progress-report";
 
@@ -8,12 +8,13 @@ import { ProgressReport } from "./progress-report";
   styleUrls: ["./progress-monitor.component.css"]
 })
 export class ProgressMonitorComponent implements OnInit {
+  
   messages: ProgressMessage[];
-
-  constructor(
-    private timeoutInterval: number,
-    private progressCallback: Function
-  ) {}
+  @Input()
+  public timeoutInterval: number;
+  @Input()
+  public progressCallback: Function;
+  constructor() {}
 
   ngOnInit() {
     this.messages = [];
@@ -23,15 +24,17 @@ export class ProgressMonitorComponent implements OnInit {
   monitorProgress() {
     var obj = this;
 
+    if (!obj.progressCallback) return;
+
     var progressReport: ProgressReport;
     progressReport = obj.progressCallback();
     if (progressReport) {
       //invoke progress report
       var jobStatus = progressReport.processStatus;
-      
+
       //append messages
-      if(progressReport.messages){
-        progressReport.messages.forEach(function(value){
+      if (progressReport.messages) {
+        progressReport.messages.forEach(function(value) {
           obj.messages.push(value);
         });
       }
