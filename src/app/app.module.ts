@@ -10,6 +10,7 @@ import { HelloComponent } from './hello.component';
 import {EstimationFormComponent} from './estimationform/estimationform.component';
 import { ProgressMonitorComponent } from './progress-monitor/progress-monitor.component';
 
+
 @NgModule({
   imports:      [ BrowserModule, FormsModule, MatSnackBarModule,BrowserAnimationsModule,MatCardModule ],
   declarations: [ AppComponent, HelloComponent,EstimationFormComponent, ProgressMonitorComponent ],
