@@ -21,9 +21,10 @@ export class EstimationFormComponent implements OnInit {
     progressReport = new ProgressReport();
     progressReport.processStatus = 1;
     this.counter++;
-    if (obj.counter > 30) progressReport.processStatus = 0;
+    if (obj.counter > 30) 
+    progressReport.processStatus = 0;
     progressReport.messages=[];
-    progressReport.messages.push(new ProgressMessage(0, 'Message '+obj.counter));
+    progressReport.messages.push(new ProgressMessage(obj.counter%2, 'Message '+obj.counter));
 
     return progressReport;
   }

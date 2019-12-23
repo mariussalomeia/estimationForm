@@ -1,6 +1,7 @@
 import { Component,Input, OnInit } from "@angular/core";
 import { ProgressMessage } from "./progress-message";
 import { ProgressReport } from "./progress-report";
+import {  MatSnackBarModule, MatCard, MatCardContent, MatCardTitle} from '@angular/material';
 
 @Component({
   selector: "app-progress-monitor",

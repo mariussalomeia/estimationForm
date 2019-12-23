@@ -1,7 +1,8 @@
-<p>
-progress Monitor
-</p>
-
- <li  *ngFor="let message of messages" class="list-group-item" >
-  {{ message.type }} - {{message.content}}
-  </li>
+<mat-card>
+	<mat-card-title>Progress Monitor</mat-card-title>
+	<mat-card-content>
+		<li *ngFor="let message of messages" class="list-group-item">
+			{{ message.type }} - {{message.content}}
+		</li>
+	</mat-card-content>
+</mat-card>
