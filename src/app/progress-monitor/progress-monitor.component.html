@@ -1,8 +1,11 @@
 <mat-card class="app-progress-monitor">
-	<mat-card-title>Progress Monitor</mat-card-title>
+	<mat-card-title>{{title}}</mat-card-title>
 	<mat-card-content>
-		<li *ngFor="let message of messages" class="list-group-item">
-			<span class="badge">{{ message.type }}</span><span> {{message.content}}</span>
-		</li>
+    <ul >
+      <li *ngFor="let message of messages">
+        <span class="badge-{{ message.type }}">&nbsp;</span>{{message.content}}
+      </li>
+    </ul>
 	</mat-card-content>
+  <mat-card-footer>Status</mat-card-footer>
 </mat-card>

@@ -1,9 +1,44 @@
-app-progress-monitor {
+.app-progress-monitor {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 15em;
 }
+.app-progress-monitor mat-card-title{
+  background-color: #EEE;
+  margin: 0em;
+  padding: 0;
+  height: 1.8em;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.app-progress-monitor mat-card-content{
+  
+  margin: 0em;
+  padding: 0;
+  height: 250px;
+  border-radius: 4px;
+  overflow-y: scroll;
+}
+
+.app-progress-monitor mat-card-footer{
+  background-color: #EEE;
+  margin: 0em;
+  padding: 0;
+  height: 1.8em;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.app-progress-monitor ul {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+
+
 .app-progress-monitor li {
   cursor: pointer;
   position: relative;
@@ -11,7 +46,7 @@ app-progress-monitor {
   background-color: #EEE;
   margin: .5em;
   padding: .3em 0;
-  height: 1.6em;
+  height: 1.8em;
   border-radius: 4px;
 }
 .app-progress-monitor li:hover {
@@ -32,6 +67,38 @@ app-progress-monitor {
   color: white;
   padding: 0.8em 0.7em 0 0.7em;
   background-color:#405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+
+.app-progress-monitor .badge-1 {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#DD0101;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+
+.app-progress-monitor .badge-0 {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#01BB01;
   line-height: 1em;
   position: relative;
   left: -1px;

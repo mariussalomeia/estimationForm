@@ -1,7 +1,12 @@
-import { Component,Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ProgressMessage } from "./progress-message";
 import { ProgressReport } from "./progress-report";
-import {  MatSnackBarModule, MatCard, MatCardContent, MatCardTitle} from '@angular/material';
+import {
+  MatSnackBarModule,
+  MatCard,
+  MatCardContent,
+  MatCardTitle
+} from "@angular/material";
 
 @Component({
   selector: "app-progress-monitor",
@@ -11,10 +16,17 @@ import {  MatSnackBarModule, MatCard, MatCardContent, MatCardTitle} from '@angul
 export class ProgressMonitorComponent implements OnInit {
   
   messages: ProgressMessage[];
+  status: number;
+  
+  @Input()
+  public title:string;
+  
   @Input()
   public timeoutInterval: number;
+  
   @Input()
   public progressCallback: Function;
+  
   constructor() {}
 
   ngOnInit() {
@@ -32,7 +44,7 @@ export class ProgressMonitorComponent implements OnInit {
     if (progressReport) {
       //invoke progress report
       var jobStatus = progressReport.processStatus;
-
+      obj.status = jobStatus;
       //append messages
       if (progressReport.messages) {
         progressReport.messages.forEach(function(value) {
