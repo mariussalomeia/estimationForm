@@ -1,6 +1,16 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  Inject,
+  Optional
+} from "@angular/core";
 import { ProgressMessage } from "./progress-message";
 import { ProgressReport } from "./progress-report";
+import {MatSnackBar,MAT_SNACK_BAR_DATA} from '@angular/material';
+
+
 import {
   MatSnackBarModule,
   MatCard,
@@ -28,7 +38,14 @@ export class ProgressMonitorComponent implements OnInit {
   @Input()
   public progressCallback: Function;
 
-  constructor() {}
+  constructor(private snackBar: MatSnackBar,
+    @Optional() @Inject(MAT_SNACK_BAR_DATA) public data: any) {
+    if (data) {
+      this.processTitle = data.processTitle;
+      this.timeoutInterval = data.timeoutInterval;
+      this.progressCallback = data.progressCallback;
+    }
+  }
 
   ngOnInit() {
     this.messages = [];
@@ -42,7 +59,9 @@ export class ProgressMonitorComponent implements OnInit {
       console.log(err);
     }
   }
-
+  closeMessagePopup(){
+    this.snackBar.dismiss();
+  }
   monitorProgress() {
     var obj = this;
 
@@ -59,8 +78,7 @@ export class ProgressMonitorComponent implements OnInit {
         progressReport.messages.forEach(function(value) {
           obj.messages.push(value);
         });
-       
-       }
+      }
 
       if (jobStatus != 0) {
         //job not completed yet so scheduled another fetch
