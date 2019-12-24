@@ -1,12 +1,12 @@
 <mat-card class="app-progress-monitor">
 	<mat-card-title>{{processTitle}}</mat-card-title>
 	<mat-card-content #scrollMe [scrollTop]="scrollMe.scrollHeight">
-    <ul >
-      <li *ngFor="let message of messages">
-        <span class="badge-{{ message.type }}">&nbsp;</span>{{message.content}}
-      </li>
-    </ul>
+		<ul>
+			<li *ngFor="let message of messages" [class.success]="message.type===0" [class.error]="message.type===1">
+				<span [class.badge-success]="message.type===0" [class.badge-error]="message.type===1">&nbsp;</span>{{message.content}}
+			</li>
+		</ul>
 	</mat-card-content>
-  <mat-card-footer>Status</mat-card-footer>
+	<mat-card-footer>Status</mat-card-footer>
 </mat-card>
- <button mat-button (click)="closeMessagePopup()">Close</button>
+<button mat-button (click)="closeMessagePopup()">Close</button>
